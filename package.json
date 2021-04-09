@@ -1,0 +1,124 @@
+{
+	"name": "holosun",
+	"description": "An events API with delegation and type declarations.",
+	"version": "1.0.0",
+	"author": {
+		"name": "roydukkey",
+		"email": "contact@changelog.me",
+		"url": "http://changelog.me"
+	},
+	"license": "Apache-2.0",
+	"homepage": "https://github.com/roydukkey/holosun/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/roydukkey/holosun.git"
+	},
+	"bugs": {
+		"url": "https://github.com/roydukkey/holosun/issues"
+	},
+	"keywords": [
+		"events",
+		"delegation"
+	],
+	"module": "./dist/holosun.js",
+	"types": "./dist/holosun.d.ts",
+	"main": "./dist/holosun.umd.js",
+	"exports": {
+		".": {
+			"node": {
+				"module": "./dist/holosun.js",
+				"require": "./dist/holosun.umd.js"
+			},
+			"default": "./dist/holosun.js"
+		}
+	},
+	"devDependencies": {
+		"@babel/core": "^7.13.14",
+		"@babel/preset-env": "^7.13.12",
+		"@babel/preset-typescript": "^7.13.0",
+		"@roydukkey/eslint-config": "^1.0.5",
+		"@types/jest": "^26.0.22",
+		"@types/node": "^14.14.37",
+		"@typescript-eslint/eslint-plugin": "^4.20.0",
+		"@typescript-eslint/parser": "^4.20.0",
+		"@wessberg/rollup-plugin-ts": "^1.3.11",
+		"babel-jest": "^26.6.3",
+		"clean-package": "^1.0.1",
+		"cspell": "^5.3.12",
+		"eslint": "^7.23.0",
+		"eslint-plugin-tsdoc": "^0.2.11",
+		"jest": "^26.6.3",
+		"rollup": "^2.44.0",
+		"rollup-plugin-license": "^2.3.0",
+		"terser": "^5.6.1",
+		"ts-node": "^9.1.1",
+		"typescript": "^4.2.3",
+		"yarpm": "^1.1.1"
+	},
+	"scripts": {
+		"clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
+		"lint": "yarpm run lint:spelling && yarpm run lint:es",
+		"lint:es": "eslint --ext js,ts ./",
+		"lint:spelling": "cspell --config './.vscode/cSpell.json' --no-progress '**/{.*/**/,.*/**/.,,.}*'",
+		"build": "yarpm run clean && rollup --config",
+		"minify": "terser $npm_package_module --compress --mangle --module -o $npm_package_module & terser $npm_package_main --compress --mangle -o $npm_package_main",
+		"test": "jest",
+		"prepack": "yarpm run lint && yarpm run build && yarpm run minify && yarpm run test -- --coverage=false --verbose=false && clean-package",
+		"new:pack": "yarpm pack && clean-package restore",
+		"new:publish": "yarpm publish && clean-package restore"
+	},
+	"clean-package": {
+		"indent": "\t",
+		"remove": [
+			"babel",
+			"browserslist",
+			"clean-package",
+			"eslintConfig",
+			"jest",
+			"scripts"
+		]
+	},
+	"jest": {
+		"testEnvironment": "jsdom",
+		"verbose": true,
+		"collectCoverage": true,
+		"coverageDirectory": ".jest/coverage",
+		"cacheDirectory": ".jest/cache"
+	},
+	"browserslist": [
+		"defaults"
+	],
+	"babel": {
+		"presets": [
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			],
+			"@babel/preset-typescript"
+		]
+	},
+	"eslintConfig": {
+		"ignorePatterns": [
+			"dist/*"
+		],
+		"parserOptions": {
+			"ecmaVersion": 6,
+			"sourceType": "module"
+		},
+		"extends": [
+			"@roydukkey/eslint-config"
+		],
+		"rules": {
+			"@typescript-eslint/no-empty-interface": [
+				"error",
+				{
+					"allowSingleExtends": true
+				}
+			]
+		}
+	}
+}
