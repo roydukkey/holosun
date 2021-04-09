@@ -3,6 +3,7 @@
 *.user
 *.vs
 *.vscode
+*.github
 
 # Package Managers
 node_modules
