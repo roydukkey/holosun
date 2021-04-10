@@ -1,3 +1,4 @@
+<!--- cspell:ignore ecmascript, holosunon, holosunone, holosunany, holosunoff, holosuntrigger --->
 # Holosun
 
 [![Release Version](https://img.shields.io/npm/v/holosun.svg)](https://www.npmjs.com/package/holosun)
@@ -27,17 +28,17 @@ Alteratively, importing TypeScript directly will allow transpiled code to be opt
 import { on, off } from 'holosun/typescript';
 ```
 
-Note: this package includes a proper [ECMAScript module](#ECMAScript-Modules).
+Note: this package includes a proper [ECMAScript module](#ecmascript-modules).
 
 ## API Summary
 
 | function | description |
 | --- | --- |
-| [`holosun.on()`](#HolosunOn) | Attach an event listener that will be called whenever a specified event type is delivered to the given target. |
-| [`holosun.one()`](#HolosunOne) | Attach an event listener that will be called once whenever each of the specified event types are delivered to the given target. |
-| [`holosun.any()`](#HolosunAny) | Attach an event listener that will be called once whenever any of the specified event types are delivered to the given target. |
-| [`holosun.off()`](#HolosunOff) | Detach event listeners of the specified event types from the given target. |
-| [`holosun.trigger()`](#HolosunTrigger) | Executes all listeners attached to the given target for the specified event types. |
+| [`holosun.on()`](#holosunon) | Attach an event listener that will be called whenever a specified event type is delivered to the given target. |
+| [`holosun.one()`](#holosunone) | Attach an event listener that will be called once whenever each of the specified event types are delivered to the given target. |
+| [`holosun.any()`](#holosunany) | Attach an event listener that will be called once whenever any of the specified event types are delivered to the given target. |
+| [`holosun.off()`](#holosunoff) | Detach event listeners of the specified event types from the given target. |
+| [`holosun.trigger()`](#holosuntrigger) | Executes all listeners attached to the given target for the specified event types. |
 
 ## API
 
@@ -72,7 +73,7 @@ Attach an event listener that will be called once whenever each of the specified
 Attach an event listener that will be called once whenever each of the specified event types are delivered to the given node from specific descendants.
 
 ##### Parameters & Returns
-Same as [`holosun.on()`](#HolosunOn).
+Same as [`holosun.on()`](#holosunon).
 
 ### holosun.any()
 
@@ -83,7 +84,7 @@ Attach an event listener that will be called once whenever any of the specified 
 Attach an event listener that will be called once whenever any of the specified event types are delivered to the given node from specific descendants.
 
 ##### Parameters & Returns
-Same as [`holosun.on()`](#HolosunOn).
+Same as [`holosun.on()`](#holosunon).
 
 ### holosun.off()
 
