@@ -169,3 +169,10 @@ These CDNs all provide the entire API as a `holosun` global variable:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/holosun@latest/dist/holosun.umd.js"></script>
 ```
+
+## Support Limiters
+
+These are some of the common limiting issues which are not addressed in this library. You might consider using [`core-js`](https://github.com/zloirock/core-js) when building Holosun into a project.
+
+1. `Element.prototype.matches` is not available in IE, however there is a [polyfill](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#polyfill) available for IE9+.
+1. `Map`, `Set`, `WeakMap`, `WeakSet` is not available before IE 11, there are multiple polyfills.
