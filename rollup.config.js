@@ -26,6 +26,10 @@ export default [
 		plugins: [
 			typescript({
 				transpiler: 'babel',
+				tsconfig: (config) => ({
+					...config,
+					target: undefined // Remove target in favor of browserslist
+				}),
 				babelConfig: {
 					presets: [['@babel/preset-env']],
 					comments: false
@@ -46,6 +50,7 @@ export default [
 				transpiler: 'babel',
 				tsconfig: (config) => ({
 					...config,
+					target: undefined, // Remove target in favor of browserslist
 					declaration: false
 				}),
 				babelConfig: {
