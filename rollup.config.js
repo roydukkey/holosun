@@ -9,7 +9,7 @@ const commonPlugins = [
 	license({
 		banner: {
 		commentStyle: 'none',
-		content: `/*! ${name} v${version} | (c) ${author.name} | ${repository.url.replace('.git', `/blob/${version}/LICENSE`)} */`
+		content: `/*! ${name} v${version} | (c) ${author.name} | ${repository.url.replace('.git', `/blob/v${version}/LICENSE`)} */`
 		}
 	})
 ];
