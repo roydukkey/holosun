@@ -29,11 +29,7 @@ export default [
 				tsconfig: (config) => ({
 					...config,
 					target: undefined // Remove target in favor of browserslist
-				}),
-				babelConfig: {
-					presets: [['@babel/preset-env']],
-					comments: false
-				}
+				})
 			}),
 			...commonPlugins
 		]
@@ -52,11 +48,7 @@ export default [
 					...config,
 					target: undefined, // Remove target in favor of browserslist
 					declaration: false
-				}),
-				babelConfig: {
-					presets: [['@babel/preset-env']],
-					comments: false
-				}
+				})
 			}),
 			...commonPlugins
 		]
