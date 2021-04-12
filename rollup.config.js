@@ -1,6 +1,7 @@
+import { version as browserslistVersion } from 'browserslist/package.json';
 import license from 'rollup-plugin-license';
 import typescript from '@wessberg/rollup-plugin-ts';
-import { author, main, module, name, repository, version } from './package.json';
+import { author, browserslist, main, module, name, repository, version } from './package.json';
 
 
 const input = './typescript.ts';
@@ -9,7 +10,7 @@ const commonPlugins = [
 	license({
 		banner: {
 		commentStyle: 'none',
-		content: `/*! ${name} v${version} | (c) ${author.name} | ${repository.url.replace('.git', `/blob/v${version}/LICENSE`)} */`
+		content: `/*! ${name} v${version} | (c) ${author.name} | ${repository.url.replace('.git', `/blob/v${version}/LICENSE`)} | @browserslist v${browserslistVersion}: ${browserslist.join(', ')} */`
 		}
 	})
 ];
