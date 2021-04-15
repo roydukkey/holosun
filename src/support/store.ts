@@ -2,8 +2,7 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { generateOptionsKey } from './options';
-import { separateTypes } from './type';
+import { generateOptionsKey, separateTypes } from './util';
 
 
 // We need to be able to track that listener's w/o augmenters have been added.
