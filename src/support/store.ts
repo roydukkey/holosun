@@ -52,7 +52,7 @@ export function add (target: EventTarget, selector: string | null, $types: strin
 	const types = separateTypes($types);
 	let result = false;
 
-	if (types.length) {
+	if (validateParameters (target, selector, types)) {
 		const optionsKey = generateOptionsKey(options);
 
 		// Add new target
@@ -118,7 +118,7 @@ export function remove (target: EventTarget, selector: string | null, $types: st
 	let result = false;
 	const types = separateTypes($types);
 
-	if (types.length) {
+	if (validateParameters (target, selector, types)) {
 
 		const typeStore = store.get(target);
 
@@ -180,4 +180,21 @@ export function remove (target: EventTarget, selector: string | null, $types: st
 	}
 
 	return result;
+}
+
+
+function validateParameters (target: EventTarget, selector: string | null, types: string[]): number | boolean {
+	return (
+		// has types
+		types.length &&
+		(
+			target instanceof Node
+
+				// selector is not empty string
+				? selector === null || selector.length
+
+				// selector has not been provided for EventTarget
+				: selector === null
+		)
+	);
 }
