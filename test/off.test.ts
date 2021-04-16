@@ -179,7 +179,7 @@ packages.forEach(([name, off, on, store]) => {
 
 			const node = self.document.createElement('div');
 
-			test('.off(EventTarget, string, string)', () => {
+			test('.off(Node, string, string)', () => {
 				on(node, '.delegation', '$undefined', listener);
 
 				const success = off(node, '.delegation', '$undefined');
@@ -189,7 +189,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, null)', () => {
+			test('.off(Node, string, string, null)', () => {
 				on(node, '.delegation', '$null', null);
 
 				const success = off(node, '.delegation', '$null', null);
@@ -199,7 +199,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, null, boolean)', () => {
+			test('.off(Node, string, string, null, boolean)', () => {
 				on(node, '.delegation', 'null_boolean', null, true);
 				on(node, '.delegation', 'null_boolean', null, false);
 
@@ -216,7 +216,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail2).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, null, EventListenerOptions)', () => {
+			test('.off(Node, string, string, null, EventListenerOptions)', () => {
 				on(node, '.delegation', 'null_event-listener-options', null, { capture: true });
 				on(node, '.delegation', 'null_event-listener-options', null, { capture: false });
 
@@ -233,7 +233,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail2).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, EventListener)', () => {
+			test('.off(Node, string, string, EventListener)', () => {
 				on(node, '.delegation', '$event-listener', listener);
 
 				const success = off(node, '.delegation', '$event-listener', listener);
@@ -243,7 +243,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, EventListener, boolean)', () => {
+			test('.off(Node, string, string, EventListener, boolean)', () => {
 				on(node, '.delegation', 'event-listener_boolean', listener, true);
 				on(node, '.delegation', 'event-listener_boolean', listener, false);
 
@@ -260,7 +260,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail2).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, EventListener, EventListenerOptions)', () => {
+			test('.off(Node, string, string, EventListener, EventListenerOptions)', () => {
 				on(node, '.delegation', 'event-listener_event-listener-options', listener, { capture: true });
 				on(node, '.delegation', 'event-listener_event-listener-options', listener, { capture: false });
 
@@ -277,7 +277,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail2).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, EventListenerObject)', () => {
+			test('.off(Node, string, string, EventListenerObject)', () => {
 				on(node, '.delegation', '$event-listener-object', listenerObject);
 
 				const success = off(node, '.delegation', '$event-listener-object', listenerObject);
@@ -287,7 +287,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, EventListenerObject, boolean)', () => {
+			test('.off(Node, string, string, EventListenerObject, boolean)', () => {
 				on(node, '.delegation', 'event-listener-object_boolean', listenerObject, true);
 				on(node, '.delegation', 'event-listener-object_boolean', listenerObject, false);
 
@@ -304,7 +304,7 @@ packages.forEach(([name, off, on, store]) => {
 				expect(fail2).toBe(false);
 			});
 
-			test('.off(EventTarget, string, string, EventListenerObject, EventListenerOptions)', () => {
+			test('.off(Node, string, string, EventListenerObject, EventListenerOptions)', () => {
 				on(node, '.delegation', 'event-listener-object_event-listener-options', listenerObject, { capture: true });
 				on(node, '.delegation', 'event-listener-object_event-listener-options', listenerObject, { capture: false });
 
