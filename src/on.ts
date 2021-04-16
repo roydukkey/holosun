@@ -68,11 +68,26 @@ export function on (node: Node, selector: string, types: string, listener: Event
 
 
 /**
+ * Attach an event listener that will be called whenever a specified event type is delivered to the given target or node.
+ *
+ * @remarks
+ * This ambiguous signature enables other libraries to forward configuration up the chain without branching logic.
+ */
+export function on (
+	targetOrNode: EventTarget,
+	selector: string | null,
+	types: string,
+	listener: EventListenerOrEventListenerObject | null,
+	useCaptureOrOptions?: boolean | AddEventListenerOptions
+): EventListenerOrEventListenerObject | null | undefined;
+
+
+/**
  * @internal
  */
 export function on (
 	target: EventTarget,
-	selector: string,
+	selector: string | null,
 	types: string | EventListenerOrEventListenerObject | null,
 	listener?: boolean | AddEventListenerOptions | EventListenerOrEventListenerObject | null,
 	options?: boolean | AddEventListenerOptions
@@ -82,6 +97,6 @@ export function on (
 		return internalOn(target, selector, types, listener as EventListenerOrEventListenerObject | null, options);
 	}
 
-	return internalOn(target, null, selector, types as EventListenerOrEventListenerObject | null, listener as boolean | AddEventListenerOptions | undefined);
+	return internalOn(target, null, selector as string, types as EventListenerOrEventListenerObject | null, listener as boolean | AddEventListenerOptions | undefined);
 
 }
