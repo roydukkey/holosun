@@ -7,13 +7,14 @@ import { on as moduleOn } from 'holosun';
 import { on as srcOn } from '../../src/on';
 
 
-const methods: Array<[string, typeof srcOn]> = [
+const packages: Array<[string, typeof srcOn]> = [
 	['typescript', srcOn],
 	['main', mainOn],
 	['module', moduleOn]
 ];
 
-methods.forEach(([name, on]) => {
+
+packages.forEach(([name, on]) => {
 	describe(`'${name}' Package`, () => {
 
 		const listener = (): void => { /**/ };

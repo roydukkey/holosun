@@ -9,14 +9,14 @@ import { off as mainOff, on as mainOn } from '../../dist/holosun';
 import { off as moduleOff, on as moduleOn } from 'holosun';
 
 
-const methods: Array<[string, typeof srcOff, typeof srcOn, typeof store | null]> = [
+const packages: Array<[string, typeof srcOff, typeof srcOn, typeof store | null]> = [
 	['typescript', srcOff, srcOn, store],
 	['main', mainOff, mainOn, null],
 	['module', moduleOff, moduleOn, null]
 ];
 
 
-methods.forEach(([name, off, on, store]) => {
+packages.forEach(([name, off, on, store]) => {
 	describe(`'${name}' Package`, () => {
 
 		const listener = (): void => { /**/ };
