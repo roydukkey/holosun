@@ -83,11 +83,20 @@ export function off (node: Node, selector: string, types: string, listener: Even
 
 
 /**
+ * Detach event listeners of the specified event types from the given target or node.
+ *
+ * @remarks
+ * This ambiguous signature enables other libraries to forward configuration up the chain without branching logic.
+ */
+export function off (targetOrNode: EventTarget, selector: string | null, types: string, listener?: EventListenerOrEventListenerObject | null, useCaptureOrOptions?: boolean | EventListenerOptions): boolean;
+
+
+/**
  * @internal
  */
 export function off (
 	target: EventTarget,
-	selector: string,
+	selector: string | null,
 	types?: string | EventListenerOrEventListenerObject | null,
 	listener?: boolean | EventListenerOptions | EventListenerOrEventListenerObject | null,
 	options?: boolean | EventListenerOptions

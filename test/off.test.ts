@@ -329,5 +329,251 @@ packages.forEach(([name, off, on, store]) => {
 
 		});
 
+		describe('On Function (ambiguous)', () => {
+
+			test('.off(EventTarget, null, string)', () => {
+				on(self, null, 'ambiguous|$undefined', listener);
+
+				const success = off(self, null, 'ambiguous|$undefined');
+				expect(success).toBe(true);
+
+				const fail = off(self, null, 'ambiguous|$undefined');
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, null)', () => {
+				on(self, null, 'ambiguous|$null', null);
+
+				const success = off(self, null, 'ambiguous|$null', null);
+				expect(success).toBe(true);
+
+				const fail = off(self, null, 'ambiguous|$null', null);
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, null, boolean)', () => {
+				on(self, null, 'ambiguous|null_boolean', null, true);
+				on(self, null, 'ambiguous|null_boolean', null, false);
+
+				const success1 = off(self, null, 'ambiguous|null_boolean', null, false);
+				expect(success1).toBe(true);
+
+				const success2 = off(self, null, 'ambiguous|null_boolean', null, true);
+				expect(success2).toBe(true);
+
+				const fail1 = off(self, null, 'ambiguous|null_boolean', null, false);
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, null, 'ambiguous|null_boolean', null, true);
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, null, EventListenerOptions)', () => {
+				on(self, null, 'ambiguous|null_event-listener-options', null, { capture: true });
+				on(self, null, 'ambiguous|null_event-listener-options', null, { capture: false });
+
+				const success1 = off(self, null, 'ambiguous|null_event-listener-options', null, { capture: false });
+				expect(success1).toBe(true);
+
+				const success2 = off(self, null, 'ambiguous|null_event-listener-options', null, { capture: true });
+				expect(success2).toBe(true);
+
+				const fail1 = off(self, null, 'ambiguous|null_event-listener-options', null, { capture: false });
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, null, 'ambiguous|null_event-listener-options', null, { capture: true });
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, EventListener)', () => {
+				on(self, null, 'ambiguous|$event-listener', listener);
+
+				const success = off(self, null, 'ambiguous|$event-listener', listener);
+				expect(success).toBe(true);
+
+				const fail = off(self, null, 'ambiguous|$event-listener', listener);
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, EventListener, boolean)', () => {
+				on(self, null, 'ambiguous|event-listener_boolean', listener, true);
+				on(self, null, 'ambiguous|event-listener_boolean', listener, false);
+
+				const success1 = off(self, null, 'ambiguous|event-listener_boolean', listener, false);
+				expect(success1).toBe(true);
+
+				const success2 = off(self, null, 'ambiguous|event-listener_boolean', listener, true);
+				expect(success2).toBe(true);
+
+				const fail1 = off(self, null, 'ambiguous|event-listener_boolean', listener, false);
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, null, 'ambiguous|event-listener_boolean', listener, true);
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, EventListener, EventListenerOptions)', () => {
+				on(self, null, 'ambiguous|event-listener_event-listener-options', listener, { capture: true });
+				on(self, null, 'ambiguous|event-listener_event-listener-options', listener, { capture: false });
+
+				const success1 = off(self, null, 'ambiguous|event-listener_event-listener-options', listener, { capture: false });
+				expect(success1).toBe(true);
+
+				const success2 = off(self, null, 'ambiguous|event-listener_event-listener-options', listener, { capture: true });
+				expect(success2).toBe(true);
+
+				const fail1 = off(self, null, 'ambiguous|event-listener_event-listener-options', listener, { capture: false });
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, null, 'ambiguous|event-listener_event-listener-options', listener, { capture: true });
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, EventListenerObject)', () => {
+				on(self, null, 'ambiguous|$event-listener-object', listenerObject);
+
+				const success = off(self, null, 'ambiguous|$event-listener-object', listenerObject);
+				expect(success).toBe(true);
+
+				const fail = off(self, null, 'ambiguous|$event-listener-object', listenerObject);
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, EventListenerObject, boolean)', () => {
+				on(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				on(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, false);
+
+				const success1 = off(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, false);
+				expect(success1).toBe(true);
+
+				const success2 = off(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				expect(success2).toBe(true);
+
+				const fail1 = off(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, false);
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, null, string, EventListenerObject, EventListenerOptions)', () => {
+				on(self, null, 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: true });
+				on(self, null, 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: false });
+
+				const success1 = off(self, null, 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: false });
+				expect(success1).toBe(true);
+
+				const success2 = off(self, null, 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: true });
+				expect(success2).toBe(true);
+
+				const fail1 = off(self, null, 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: false });
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, null, 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: true });
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string)', () => {
+				on(self, '.delegation', 'ambiguous|$undefined', listener);
+
+				const fail = off(self, '.delegation', 'ambiguous|$undefined');
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, null)', () => {
+				on(self, '.delegation', 'ambiguous|$null', null);
+
+				const fail = off(self, '.delegation', 'ambiguous|$null', null);
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, null, boolean)', () => {
+				on(self, '.delegation', 'ambiguous|null_boolean', null, true);
+				on(self, '.delegation', 'ambiguous|null_boolean', null, false);
+
+				const fail1 = off(self, '.delegation', 'ambiguous|null_boolean', null, false);
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, '.delegation', 'ambiguous|null_boolean', null, true);
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, null, EventListenerOptions)', () => {
+				on(self, '.delegation', 'ambiguous|null_event-listener-options', null, { capture: true });
+				on(self, '.delegation', 'ambiguous|null_event-listener-options', null, { capture: false });
+
+				const fail1 = off(self, '.delegation', 'ambiguous|null_event-listener-options', null, { capture: false });
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, '.delegation', 'ambiguous|null_event-listener-options', null, { capture: true });
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, EventListener)', () => {
+				on(self, '.delegation', 'ambiguous|$event-listener', listener);
+
+				const fail = off(self, '.delegation', 'ambiguous|$event-listener', listener);
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, EventListener, boolean)', () => {
+				on(self, '.delegation', 'ambiguous|event-listener_boolean', listener, true);
+				on(self, '.delegation', 'ambiguous|event-listener_boolean', listener, false);
+
+				const fail1 = off(self, '.delegation', 'ambiguous|event-listener_boolean', listener, false);
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, '.delegation', 'ambiguous|event-listener_boolean', listener, true);
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, EventListener, EventListenerOptions)', () => {
+				on(self, '.delegation', 'ambiguous|event-listener_event-listener-options', listener, { capture: true });
+				on(self, '.delegation', 'ambiguous|event-listener_event-listener-options', listener, { capture: false });
+
+				const fail1 = off(self, '.delegation', 'ambiguous|event-listener_event-listener-options', listener, { capture: false });
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, '.delegation', 'ambiguous|event-listener_event-listener-options', listener, { capture: true });
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, EventListenerObject)', () => {
+				on(self, '.delegation', 'ambiguous|$event-listener-object', listenerObject);
+
+				const fail = off(self, '.delegation', 'ambiguous|$event-listener-object', listenerObject);
+				expect(fail).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, EventListenerObject, boolean)', () => {
+				on(self, '.delegation', 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				on(self, '.delegation', 'ambiguous|event-listener-object_boolean', listenerObject, false);
+
+				const fail1 = off(self, '.delegation', 'ambiguous|event-listener-object_boolean', listenerObject, false);
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, '.delegation', 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				expect(fail2).toBe(false);
+			});
+
+			test('.off(EventTarget, string, string, EventListenerObject, EventListenerOptions)', () => {
+				on(self, '.delegation', 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: true });
+				on(self, '.delegation', 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: false });
+
+				const fail1 = off(self, '.delegation', 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: false });
+				expect(fail1).toBe(false);
+
+				const fail2 = off(self, '.delegation', 'ambiguous|event-listener-object_event-listener-options', listenerObject, { capture: true });
+				expect(fail2).toBe(false);
+			});
+
+			if (store) {
+				test('All listener have been removed', () => {
+					expect(store.get(self)).toBeUndefined();
+				});
+			}
+
+		});
+
 	});
 });
