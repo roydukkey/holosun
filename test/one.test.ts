@@ -2,10 +2,10 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { one as mainOne } from '../../dist/holosun';
+import { one as mainOne } from '../dist/holosun';
 import { one as moduleOne } from 'holosun';
-import { one as srcOne } from '../../typescript';
-import { injectSupport, isOnceSupported } from '../../src/support/once';
+import { one as srcOne } from '../typescript';
+import { injectSupport, isOnceSupported } from '../src/support/once';
 
 
 const packages: Array<[string, typeof srcOne, typeof injectSupport | null]> = [

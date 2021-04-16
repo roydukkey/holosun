@@ -2,9 +2,9 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { on as mainOn, trigger as mainTrigger } from '../../dist/holosun';
+import { on as mainOn, trigger as mainTrigger } from '../dist/holosun';
 import { on as moduleOn, trigger as moduleTrigger } from 'holosun';
-import { on as srcOn, trigger as srcTrigger } from '../../typescript';
+import { on as srcOn, trigger as srcTrigger } from '../typescript';
 
 
 const packages: Array<[string, typeof srcTrigger, typeof srcOn]> = [

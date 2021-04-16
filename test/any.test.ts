@@ -2,9 +2,9 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { any as mainAny } from '../../dist/holosun';
+import { any as mainAny } from '../dist/holosun';
 import { any as moduleAny } from 'holosun';
-import { any as srcAny } from '../../typescript';
+import { any as srcAny } from '../typescript';
 
 
 const packages: Array<[string, typeof srcAny]> = [

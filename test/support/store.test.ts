@@ -2,7 +2,7 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { add, defaultAugmenterKey, remove, store } from '../../../src/support/store';
+import { add, defaultAugmenterKey, remove, store } from '../../src/support/store';
 
 
 const removeTerm = `${'\x1b[4m'}remove${'\x1b[24m'}`;

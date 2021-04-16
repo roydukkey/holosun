@@ -2,9 +2,9 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { on as mainOn } from '../../dist/holosun';
+import { on as mainOn } from '../dist/holosun';
 import { on as moduleOn } from 'holosun';
-import { on as srcOn } from '../../typescript';
+import { on as srcOn } from '../typescript';
 
 
 const packages: Array<[string, typeof srcOn]> = [

@@ -3,7 +3,7 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { isOnceSupported } from '../../../src/support/once';
+import { isOnceSupported } from '../../src/support/once';
 
 describe('Feature detection', () => {
 
