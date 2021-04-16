@@ -353,5 +353,180 @@ packages.forEach(([name, any]) => {
 
 		});
 
+		describe('On Function (ambiguous)', () => {
+
+			test('.any(EventTarget, null, string, null)', () => {
+				const success = any(self, null, 'ambiguous|$null', null);
+				expect(success).toBe(null);
+
+				const fail = any(self, null, 'ambiguous|$null', null);
+				expect(fail).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, null, boolean)', () => {
+				const success1 = any(self, null, 'ambiguous|null_boolean', null, true);
+				expect(success1).toBe(null);
+
+				const success2 = any(self, null, 'ambiguous|null_boolean', null, false);
+				expect(success2).toBe(null);
+
+				const fail1 = any(self, null, 'ambiguous|null_boolean', null, true);
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, null, 'ambiguous|null_boolean', null, false);
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, null, AddEventListenerOptions)', () => {
+				const success1 = any(self, null, 'ambiguous|null_add-event-listener-options', null, { capture: false });
+				expect(success1).toBe(null);
+
+				const success2 = any(self, null, 'ambiguous|null_add-event-listener-options', null, { capture: true });
+				expect(success2).toBe(null);
+
+				const fail1 = any(self, null, 'ambiguous|null_add-event-listener-options', null, { capture: false });
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, null, 'ambiguous|null_add-event-listener-options', null, { capture: true });
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, EventListener)', () => {
+				const success = any(self, null, 'ambiguous|event-listener', listener);
+				expect(success).toBe(listener);
+
+				const fail = any(self, null, 'ambiguous|event-listener', listener);
+				expect(fail).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, EventListener, boolean)', () => {
+				const success1 = any(self, null, 'ambiguous|event-listener_boolean', listener, true);
+				expect(success1).toBe(listener);
+
+				const success2 = any(self, null, 'ambiguous|event-listener_boolean', listener, false);
+				expect(success2).toBe(listener);
+
+				const fail1 = any(self, null, 'ambiguous|event-listener_boolean', listener, true);
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, null, 'ambiguous|event-listener_boolean', listener, false);
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, EventListener, AddEventListenerOptions)', () => {
+				const success1 = any(self, null, 'ambiguous|event-listener_add-event-listener-options', listener, { capture: false });
+				expect(success1).toBe(listener);
+
+				const success2 = any(self, null, 'ambiguous|event-listener_add-event-listener-options', listener, { capture: true });
+				expect(success2).toBe(listener);
+
+				const fail1 = any(self, null, 'ambiguous|event-listener_add-event-listener-options', listener, { capture: false });
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, null, 'ambiguous|event-listener_add-event-listener-options', listener, { capture: true });
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, EventListenerObject)', () => {
+				const success = any(self, null, 'ambiguous|event-listener-object', listenerObject);
+				expect(success).toBe(listenerObject);
+
+				const fail = any(self, null, 'ambiguous|event-listener-object', listenerObject);
+				expect(fail).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, EventListenerObject, boolean)', () => {
+				const success1 = any(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				expect(success1).toBe(listenerObject);
+
+				const success2 = any(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, false);
+				expect(success2).toBe(listenerObject);
+
+				const fail1 = any(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, null, 'ambiguous|event-listener-object_boolean', listenerObject, false);
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, null, string, EventListenerObject, AddEventListenerOptions)', () => {
+				const success1 = any(self, null, 'ambiguous|event-listener-object_add-event-listener-options', listenerObject, { capture: false });
+				expect(success1).toBe(listenerObject);
+
+				const success2 = any(self, null, 'ambiguous|event-listener-object_add-event-listener-options', listenerObject, { capture: true });
+				expect(success2).toBe(listenerObject);
+
+				const fail1 = any(self, null, 'ambiguous|event-listener-object_add-event-listener-options', listenerObject, { capture: false });
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, null, 'ambiguous|event-listener-object_add-event-listener-options', listenerObject, { capture: true });
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, null)', () => {
+				const fail = any(self, '.delegation', 'ambiguous|$null', null);
+				expect(fail).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, null, boolean)', () => {
+				const fail1 = any(self, '.delegation', 'ambiguous|null_boolean', null, true);
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, '.delegation', 'ambiguous|null_boolean', null, false);
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, null, AddEventListenerOptions)', () => {
+				const fail1 = any(self, '.delegation', 'ambiguous|null_add-event-listener-options', null, { capture: false });
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, '.delegation', 'ambiguous|null_add-event-listener-options', null, { capture: true });
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, EventListener)', () => {
+				const fail = any(self, '.delegation', 'ambiguous|event-listener', listener);
+				expect(fail).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, EventListener, boolean)', () => {
+				const fail1 = any(self, '.delegation', 'ambiguous|event-listener_boolean', listener, true);
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, '.delegation', 'ambiguous|event-listener_boolean', listener, false);
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, EventListener, AddEventListenerOptions)', () => {
+				const fail1 = any(self, '.delegation', 'ambiguous|event-listener_add-event-listener-options', listener, { capture: false });
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, '.delegation', 'ambiguous|event-listener_add-event-listener-options', listener, { capture: true });
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, EventListenerObject)', () => {
+				const fail = any(self, '.delegation', 'ambiguous|event-listener-object', listenerObject);
+				expect(fail).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, EventListenerObject, boolean)', () => {
+				const fail1 = any(self, '.delegation', 'ambiguous|event-listener-object_boolean', listenerObject, true);
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, '.delegation', 'ambiguous|event-listener-object_boolean', listenerObject, false);
+				expect(fail2).toBe(undefined);
+			});
+
+			test('.any(EventTarget, string, string, EventListenerObject, AddEventListenerOptions)', () => {
+				const fail1 = any(self, '.delegation', 'ambiguous|event-listener-object_add-event-listener-options', listenerObject, { capture: false });
+				expect(fail1).toBe(undefined);
+
+				const fail2 = any(self, '.delegation', 'ambiguous|event-listener-object_add-event-listener-options', listenerObject, { capture: true });
+				expect(fail2).toBe(undefined);
+			});
+
+		});
+
 	});
 });
