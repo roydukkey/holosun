@@ -2,11 +2,10 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { off as srcOff } from '../../src/off';
-import { on as srcOn } from '../../src/on';
 import { store } from '../../src/support/store';
 import { off as mainOff, on as mainOn } from '../../dist/holosun';
 import { off as moduleOff, on as moduleOn } from 'holosun';
+import { off as srcOff, on as srcOn } from '../../typescript';
 
 
 const packages: Array<[string, typeof srcOff, typeof srcOn, typeof store | null]> = [

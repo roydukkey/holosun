@@ -4,7 +4,7 @@
 
 import { any as mainAny } from '../../dist/holosun';
 import { any as moduleAny } from 'holosun';
-import { any as srcAny } from '../../src/any';
+import { any as srcAny } from '../../typescript';
 
 
 const packages: Array<[string, typeof srcAny]> = [

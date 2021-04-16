@@ -4,7 +4,7 @@
 
 import { on as mainOn } from '../../dist/holosun';
 import { on as moduleOn } from 'holosun';
-import { on as srcOn } from '../../src/on';
+import { on as srcOn } from '../../typescript';
 
 
 const packages: Array<[string, typeof srcOn]> = [
