@@ -17,12 +17,16 @@
 		"url": "https://github.com/roydukkey/holosun/issues"
 	},
 	"keywords": [
+		"browser",
+		"delegate",
 		"delegation",
 		"dom",
-		"domEvents",
-		"events",
-		"listeners",
-		"once"
+		"domEvent",
+		"event",
+		"listener",
+		"live",
+		"once",
+		"selector"
 	],
 	"module": "./dist/holosun.js",
 	"types": "./dist/holosun.d.ts",
