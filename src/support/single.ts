@@ -19,7 +19,7 @@ export const oneAugmenterKey = 'O';
 export function single (
 	augmenterKey: string | undefined,
 	target: EventTarget,
-	$selector: string,
+	selector: string | null,
 	$types: string | EventListenerOrEventListenerObject | null,
 	$listener?: boolean | AddEventListenerOptions | EventListenerOrEventListenerObject | null,
 	options?: boolean | AddEventListenerOptions
@@ -27,7 +27,6 @@ export function single (
 
 	let types: string;
 	let listener: EventListenerOrEventListenerObject | null;
-	let selector: string | null = $selector;
 
 	if (typeof $types === 'string') {
 		types = $types;
@@ -37,7 +36,7 @@ export function single (
 	else {
 		options = $listener as boolean | AddEventListenerOptions | undefined;
 		listener = $types as EventListenerOrEventListenerObject | null;
-		types = $selector;
+		types = selector as string;
 		selector = null;
 	}
 
