@@ -4,7 +4,7 @@
 [![Release Version](https://img.shields.io/npm/v/holosun.svg)](https://www.npmjs.com/package/holosun)
 [![License](https://img.shields.io/badge/License-Apache%202-blue.svg)](https://github.com/roydukkey/holosun/blob/master/LICENSE)
 
-An events API with delegation and type declarations. Holosun is built to remain completely interoperable with the native events API.
+A DOM events API with delegation and type declarations. Holosun is built to remain completely interoperable with the native events API.
 
 ## Usage
 

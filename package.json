@@ -1,6 +1,6 @@
 {
 	"name": "holosun",
-	"description": "An events API with delegation and type declarations.",
+	"description": "A DOM events API with delegation and type declarations.",
 	"version": "1.0.0",
 	"author": {
 		"name": "roydukkey",
@@ -17,8 +17,12 @@
 		"url": "https://github.com/roydukkey/holosun/issues"
 	},
 	"keywords": [
+		"delegation",
+		"dom",
+		"domEvents",
 		"events",
-		"delegation"
+		"listeners",
+		"once"
 	],
 	"module": "./dist/holosun.js",
 	"types": "./dist/holosun.d.ts",
