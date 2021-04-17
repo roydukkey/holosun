@@ -20,9 +20,7 @@ packages.forEach(([name, trigger, on]) => {
 		let count = 0;
 		const listener = (): number => count++;
 		const receivesEvent = (event: Event): void => expect(event).not.toHaveProperty('detail');
-		const receivesCustomEvent = (event: Event): void => {
-			expect(event).toHaveProperty('detail');
-		};
+		const receivesCustomEvent = (event: Event): void => expect(event).toHaveProperty('detail');
 
 		describe('Trigger Function', () => {
 
