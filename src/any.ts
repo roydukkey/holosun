@@ -68,11 +68,26 @@ export function any (node: Node, selector: string, types: string, listener: Even
 
 
 /**
+ * Attach an event listener that will be called once whenever any of the specified event types are delivered to the given target or node.
+ *
+ * @remarks
+ * This ambiguous signature enables other libraries to forward configuration up the chain without branching logic.
+ */
+export function any (
+	targetOrNode: EventTarget,
+	selector: string | null,
+	types: string,
+	listener: EventListenerOrEventListenerObject | null,
+	useCaptureOrOptions?: boolean | AddEventListenerOptions
+): EventListenerOrEventListenerObject | null | undefined;
+
+
+/**
  * @internal
  */
 export function any (
 	target: EventTarget,
-	selector: string,
+	selector: string | null,
 	types: string | EventListenerOrEventListenerObject | null,
 	listener?: boolean | AddEventListenerOptions | EventListenerOrEventListenerObject | null,
 	options?: boolean | AddEventListenerOptions

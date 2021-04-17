@@ -2,10 +2,11 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { add, defaultAugmenterKey, remove, store } from '../../../src/support/store';
+import { add, defaultAugmenterKey, remove, store } from '../../src/support/store';
 
 
 const removeTerm = `${'\x1b[4m'}remove${'\x1b[24m'}`;
+const node = self.document.createElement('div');
 
 
 /**
@@ -454,38 +455,47 @@ describe('Listener Store', () => {
 		const added2 = add(self, null, 'multiple-delegate', listener, defaultAugmenterKey, null);
 		const added1 = add(self, '.delegate-1', 'multiple-delegate', listener, 'delegate', () => { /**/ });
 		const added3 = add(self, '.delegate-2', 'multiple-delegate', listener, 'delegate', () => { /**/ });
+		const added4 = add(node, '.delegate-1', 'multiple-delegate', listener, 'delegate', () => { /**/ });
+		const added5 = add(node, '.delegate-2', 'multiple-delegate', listener, 'delegate', () => { /**/ });
 
-		expect(added1).toBe(true);
+		expect(added1).toBe(false);
 		expect(added2).toBe(true);
-		expect(added3).toBe(true);
+		expect(added3).toBe(false);
+		expect(added4).toBe(true);
+		expect(added5).toBe(true);
 
 		const removed1 = remove(self, null, 'multiple-delegate', listener, undefined, defaultAugmenterKey);
 		const removed2 = remove(self, '.delegate-2', 'multiple-delegate', listener, undefined, 'delegate');
 		const removed3 = remove(self, '.delegate-1', 'multiple-delegate', listener, undefined, 'delegate');
+		const removed4 = remove(node, '.delegate-2', 'multiple-delegate', listener, undefined, 'delegate');
+		const removed5 = remove(node, '.delegate-1', 'multiple-delegate', listener, undefined, 'delegate');
 
 		expect(removed1).toBe(true);
-		expect(removed2).toBe(true);
-		expect(removed3).toBe(true);
+		expect(removed2).toBe(false);
+		expect(removed3).toBe(false);
+		expect(removed4).toBe(true);
+		expect(removed5).toBe(true);
 	});
 
 	test(`Can ${removeTerm} multiple listeners, with different augmenters, without specifying an augmenter`, () => {
 
 		const listener = (): void => { /**/ };
-		const added1 = add(self, '.delegate', 'multiple-delegate', listener, 'delegate-1', () => { /**/ });
-		const added2 = add(self, '.delegate', 'multiple-delegate', listener, 'delegate-2', () => { /**/ });
-		const added3 = add(self, '.delegate', 'multiple-delegate', listener, 'delegate-3', () => { /**/ });
+		const added1 = add(node, '.delegate', 'multiple-delegate', listener, 'delegate-1', () => { /**/ });
+		const added2 = add(node, '.delegate', 'multiple-delegate', listener, 'delegate-2', () => { /**/ });
+		const added3 = add(node, '.delegate', 'multiple-delegate', listener, 'delegate-3', () => { /**/ });
 
 		expect(added1).toBe(true);
 		expect(added2).toBe(true);
 		expect(added3).toBe(true);
 
-		const removed = remove(self, '.delegate', 'multiple-delegate', listener);
+		const removed = remove(node, '.delegate', 'multiple-delegate', listener);
 
 		expect(removed).toBe(true);
 	});
 
 	test('All listeners have been removed', () => {
 		expect(store.get(self)).toBeUndefined();
+		expect(store.get(node)).toBeUndefined();
 	});
 
 });

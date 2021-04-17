@@ -2,7 +2,7 @@
 // Copyright (c) roydukkey. All rights reserved.                     //
 // ================================================================= //
 
-import { separateTypes } from './support/type';
+import { separateTypes } from './support/util';
 
 
 /**
