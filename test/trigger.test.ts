@@ -95,6 +95,21 @@ packages.forEach(([name, trigger, on]) => {
 				]);
 			});
 
+			test('.trigger(EventTarget, string, boolean)', () => {
+				on(self, 'string_boolean=true', receivesCustomEvent);
+				on(self, 'string_boolean=false', receivesEvent);
+
+				const result1 = trigger(self, 'string_boolean=true', true);
+				expect(result1).toStrictEqual([
+					['string_boolean=true', true]
+				]);
+
+				const result2 = trigger(self, 'string_boolean=false', false);
+				expect(result2).toStrictEqual([
+					['string_boolean=false', true]
+				]);
+			});
+
 			test('.trigger(EventTarget, string, EventInit, boolean)', () => {
 				on(self, 'string_event-init_boolean=true', receivesCustomEvent);
 				on(self, 'string_event-init_boolean=false', receivesEvent);
