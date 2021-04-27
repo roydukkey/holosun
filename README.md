@@ -59,7 +59,7 @@ Attach an event listener that will be called whenever a specified event type is 
 | `types` | `string` | A case-sensitive string representing the [event type](https://developer.mozilla.org/en-US/docs/Web/Events)s to listen for. |
 | `listener` | [`EventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) \|<br>[`EventListenerObject`](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) \|<br>`null` | The object that receives a notification (an object that implements the [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event) interface) when an event of a specified type occurs. This must be an object implementing the EventListener interface, or a function. |
 | `useCapture` | `boolean` | Whether or not events of these types will be dispatched to the registered listener before being dispatched to any target beneath it in the DOM tree. |
-| `options` | `AddEventListenerOptions` | An [options object](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#parameters) specifying characteristics about the event listener. |
+| `options` | [`AddEventListenerOptions`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#parameters) | An options object specifying characteristics about the event listener. |
 
 ##### Returns
 The provided listener when successfully attached; otherwise, `undefined`.
@@ -109,7 +109,7 @@ Detach an event listener of the specified event types from the given node for th
 | `types` | `string` | A case-sensitive string representing the [event type](https://developer.mozilla.org/en-US/docs/Web/Events)s to detach. |
 | `listener` | [`EventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) \|<br>[`EventListenerObject`](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) \|<br>`null` | The event listener to detach from the event target. |
 | `useCapture` | `boolean` | Whether or not the EventListener to be detached is registered as a capturing listener. |
-| `options` | `EventListenerOptions` | An [options object](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener#parameters) specifying characteristics about the event listener. |
+| `options` | [`EventListenerOptions`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener#parameters) | An options object specifying characteristics about the event listener. |
 
 ##### Returns
 `true` when successfully detached at least one listener; otherwise, `false`.
