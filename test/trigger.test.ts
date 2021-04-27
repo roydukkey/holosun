@@ -19,6 +19,8 @@ packages.forEach(([name, trigger, on]) => {
 
 		let count = 0;
 		const listener = (): number => count++;
+		const receivesEvent = (event: Event): void => expect(event).not.toHaveProperty('detail');
+		const receivesCustomEvent = (event: Event): void => expect(event).toHaveProperty('detail');
 
 		describe('Trigger Function', () => {
 
@@ -64,6 +66,63 @@ packages.forEach(([name, trigger, on]) => {
 				]);
 
 				expect(count).toBe(2);
+			});
+
+			test('.trigger(EventTarget, string)', () => {
+				on(self, 'string', receivesEvent);
+
+				const result = trigger(self, 'string');
+				expect(result).toStrictEqual([
+					['string', true]
+				]);
+			});
+
+			test('.trigger(EventTarget, string, EventInit)', () => {
+				on(self, 'string_event-init', receivesEvent);
+
+				const result = trigger(self, 'string_event-init', { bubbles: true });
+				expect(result).toStrictEqual([
+					['string_event-init', true]
+				]);
+			});
+
+			test('.trigger(EventTarget, string, CustomEventInit)', () => {
+				on(self, 'string_custom-event-init', receivesCustomEvent);
+
+				const result = trigger(self, 'string_custom-event-init', { detail: true });
+				expect(result).toStrictEqual([
+					['string_custom-event-init', true]
+				]);
+			});
+
+			test('.trigger(EventTarget, string, boolean)', () => {
+				on(self, 'string_boolean=true', receivesCustomEvent);
+				on(self, 'string_boolean=false', receivesEvent);
+
+				const result1 = trigger(self, 'string_boolean=true', true);
+				expect(result1).toStrictEqual([
+					['string_boolean=true', true]
+				]);
+
+				const result2 = trigger(self, 'string_boolean=false', false);
+				expect(result2).toStrictEqual([
+					['string_boolean=false', true]
+				]);
+			});
+
+			test('.trigger(EventTarget, string, EventInit, boolean)', () => {
+				on(self, 'string_event-init_boolean=true', receivesCustomEvent);
+				on(self, 'string_event-init_boolean=false', receivesEvent);
+
+				const result1 = trigger(self, 'string_event-init_boolean=true', { bubbles: true }, true);
+				expect(result1).toStrictEqual([
+					['string_event-init_boolean=true', true]
+				]);
+
+				const result2 = trigger(self, 'string_event-init_boolean=false', { bubbles: true }, false);
+				expect(result2).toStrictEqual([
+					['string_event-init_boolean=false', true]
+				]);
 			});
 
 		});

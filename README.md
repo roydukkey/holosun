@@ -116,7 +116,7 @@ Detach an event listener of the specified event types from the given node for th
 
 ### holosun.trigger()
 
-#### `trigger (target, types[, options])`
+#### `trigger (target, types[, options][, useCustomEvent])`
 Executes all listeners attached to the given target for the specified event types.
 
 ##### Parameters
@@ -124,7 +124,8 @@ Executes all listeners attached to the given target for the specified event type
 | --- | --- | --- |
 | `target` | [`EventTarget`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget) | The target on which the specified events are executed. |
 | `types` | `string` | A case-sensitive string representing the [event type](https://developer.mozilla.org/en-US/docs/Web/Events)s to execute. |
-| `options` | [`EventInit`](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event#values) | An options object specifying characteristics about the triggered event. |
+| `options` | [`EventInit`](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event#values) \| [`CustomEventInit`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#parameters) | An options object specifying characteristics about the triggered event. |
+| `useCustomEvent` | `boolean` | Whether or not to trigger an [event](https://developer.mozilla.org/en-US/docs/Web/Events) or a [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). |
 
 ##### Returns
 A list of tuples, where the first value is the event type and the second is `true`; unless the event is cancelable and at least one of the event listeners, which received the event, called [`Event.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault), the second value is `false`.
