@@ -21,7 +21,7 @@ import { on as internalOn } from './support/on';
 export function on <T extends EventTarget, E extends keyof EventMap<T> & string, R> (
 	target: T,
 	type: E,
-	listener: (this: T, event: Event | EventMap<T>[E]) => R,
+	listener: (this: T, event: EventMap<T>[E]) => R,
 	useCaptureOrOptions?: boolean | AddEventListenerOptions
 ): typeof listener | undefined;
 
