@@ -9,7 +9,7 @@ describe('EventMap', () => {
 	test('HTMLMediaElement => HTMLMediaElementEventMap', () => {
 		const target = self.document.createElement('video');
 
-		on(target, 'encrypted', function (this: HTMLMediaElement, event: MediaEncryptedEvent) {
+		on(target, 'encrypted', function (this, event) {
 			expect(this).toBeInstanceOf(HTMLMediaElement);
 			expect(event).toBeInstanceOf(MediaEncryptedEvent);
 		});
@@ -18,7 +18,7 @@ describe('EventMap', () => {
 	test('HTMLElement => HTMLElementEventMap', () => {
 		const target = self.document.createElement('div');
 
-		on(target, 'pointerdown', function (this: HTMLElement, event: PointerEvent) {
+		on(target, 'pointerdown', function (this, event) {
 			expect(this).toBeInstanceOf(HTMLElement);
 			expect(event).toBeInstanceOf(PointerEvent);
 		});
@@ -27,7 +27,7 @@ describe('EventMap', () => {
 	test('SVGSVGElement => SVGElementEventMap', () => {
 		const target = self.document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 
-		on(target, 'SVGZoom', function (this: SVGSVGElement, event: SVGZoomEvent) {
+		on(target, 'SVGZoom', function (this, event) {
 			expect(this).toBeInstanceOf(SVGSVGElement);
 			expect(event).toBeInstanceOf(SVGZoomEvent);
 		});
@@ -36,7 +36,7 @@ describe('EventMap', () => {
 	test('SVGElement => SVGElementEventMap', () => {
 		const target = self.document.createElementNS('http://www.w3.org/2000/svg', 'g');
 
-		on(target, 'copy', function (this: SVGElement, event: ClipboardEvent) {
+		on(target, 'copy', function (this, event) {
 			expect(this).toBeInstanceOf(SVGElement);
 			expect(event).toBeInstanceOf(ClipboardEvent);
 		}, {
@@ -48,7 +48,7 @@ describe('EventMap', () => {
 		class Test extends Element { }
 		const target = new Test();
 
-		on(target, 'fullscreenerror', function (this: Element, event: Event) {
+		on(target, 'fullscreenerror', function (this, event) {
 			expect(this).toBeInstanceOf(Element);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -57,7 +57,7 @@ describe('EventMap', () => {
 	test('Document => DocumentEventMap', () => {
 		const target = self.document;
 
-		on(target, 'readystatechange', function (this: Document, event: Event) {
+		on(target, 'readystatechange', function (this, event) {
 			expect(this).toBeInstanceOf(Document);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -66,7 +66,7 @@ describe('EventMap', () => {
 	test('Window => WindowEventMap', () => {
 		const target = self.window;
 
-		on(target, 'deviceorientationabsolute', function (this: Window, event: DeviceOrientationEvent) {
+		on(target, 'deviceorientationabsolute', function (this, event) {
 			expect(this).toBeInstanceOf(Window);
 			expect(event).toBeInstanceOf(DeviceOrientationEvent);
 		});
@@ -75,7 +75,7 @@ describe('EventMap', () => {
 	test('AudioScheduledSourceNode => AudioScheduledSourceNodeEventMap', () => {
 		const target = new AudioContext().createOscillator();
 
-		on(target, 'ended', function (this: AudioScheduledSourceNode, event: Event) {
+		on(target, 'ended', function (this, event) {
 			expect(this).toBeInstanceOf(AudioScheduledSourceNode);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -84,7 +84,7 @@ describe('EventMap', () => {
 	test('AudioWorkletNode => AudioWorkletNodeEventMap', () => {
 		const target = new AudioWorkletNode(new AudioContext(), 'test');
 
-		on(target, 'processorerror', function (this: AudioWorkletNode, event: Event) {
+		on(target, 'processorerror', function (this, event) {
 			expect(this).toBeInstanceOf(AudioWorkletNode);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -93,7 +93,7 @@ describe('EventMap', () => {
 	test('OfflineAudioContext => OfflineAudioContextEventMap', () => {
 		const target = new OfflineAudioContext(2, 44100 * 40, 44100);
 
-		on(target, 'complete', function (this: OfflineAudioContext, event: OfflineAudioCompletionEvent) {
+		on(target, 'complete', function (this, event) {
 			expect(this).toBeInstanceOf(OfflineAudioContext);
 			expect(event).toBeInstanceOf(OfflineAudioCompletionEvent);
 		});
@@ -102,7 +102,7 @@ describe('EventMap', () => {
 	test('IDBOpenDBRequest => IDBOpenDBRequestEventMap', () => {
 		const target = window.indexedDB.open('test', 4);
 
-		on(target, 'upgradeneeded', function (this: IDBOpenDBRequest, event: IDBVersionChangeEvent) {
+		on(target, 'upgradeneeded', function (this, event) {
 			expect(this).toBeInstanceOf(IDBOpenDBRequest);
 			expect(event).toBeInstanceOf(IDBVersionChangeEvent);
 		});
@@ -111,7 +111,7 @@ describe('EventMap', () => {
 	test('RTCIceGatherer => RTCIceGathererEventMap', () => {
 		const target = new RTCIceGatherer({ });
 
-		on(target, 'localcandidate', function (this: RTCIceGatherer, event: RTCIceGathererEvent) {
+		on(target, 'localcandidate', function (this, event) {
 			expect(this).toBeInstanceOf(RTCIceGatherer);
 			expect(event).toBeInstanceOf(RTCIceGathererEvent);
 		});
@@ -120,7 +120,7 @@ describe('EventMap', () => {
 	test('XMLHttpRequest => XMLHttpRequestEventMap', () => {
 		const target = new XMLHttpRequest();
 
-		on(target, 'readystatechange', function (this: XMLHttpRequest, event: Event) {
+		on(target, 'readystatechange', function (this, event) {
 			expect(this).toBeInstanceOf(XMLHttpRequest);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -129,7 +129,7 @@ describe('EventMap', () => {
 	test('ServiceWorker => ServiceWorkerEventMap', () => {
 		const target = new ServiceWorker();
 
-		on(target, 'statechange', function (this: ServiceWorker, event: Event) {
+		on(target, 'statechange', function (this, event) {
 			expect(this).toBeInstanceOf(ServiceWorker);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -138,7 +138,7 @@ describe('EventMap', () => {
 	test('Worker => WorkerEventMap', () => {
 		const target = new Worker('test');
 
-		on(target, 'messageerror', function (this: Worker, event: MessageEvent) {
+		on(target, 'messageerror', function (this, event) {
 			expect(this).toBeInstanceOf(Worker);
 			expect(event).toBeInstanceOf(MessageEvent);
 		});
@@ -147,7 +147,7 @@ describe('EventMap', () => {
 	test('AbortSignal => AbortSignalEventMap', () => {
 		const target = new AbortController().signal;
 
-		on(target, 'abort', function (this: AbortSignal, event: Event) {
+		on(target, 'abort', function (this, event) {
 			expect(this).toBeInstanceOf(AbortSignal);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -161,7 +161,7 @@ describe('EventMap', () => {
 		], { duration: 3000, fill: 'forwards' });
 		const target = new Animation(effect, self.document.timeline);
 
-		on(target, 'finish', function (this: Animation, event: AnimationPlaybackEvent) {
+		on(target, 'finish', function (this, event) {
 			expect(this).toBeInstanceOf(Animation);
 			expect(event).toBeInstanceOf(AnimationPlaybackEvent);
 		});
@@ -170,7 +170,7 @@ describe('EventMap', () => {
 	test('BaseAudioContext => BaseAudioContextEventMap', () => {
 		const target = new AudioContext();
 
-		on(target, 'statechange', function (this: BaseAudioContext, event: Event) {
+		on(target, 'statechange', function (this, event) {
 			expect(this).toBeInstanceOf(BaseAudioContext);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -179,7 +179,7 @@ describe('EventMap', () => {
 	test('BroadcastChannel => BroadcastChannelEventMap', () => {
 		const target = new BroadcastChannel('internal_notification');
 
-		on(target, 'messageerror', function (this: BroadcastChannel, event: MessageEvent) {
+		on(target, 'messageerror', function (this, event) {
 			expect(this).toBeInstanceOf(BroadcastChannel);
 			expect(event).toBeInstanceOf(MessageEvent);
 		});
@@ -188,7 +188,7 @@ describe('EventMap', () => {
 	test('EventSource => EventSourceEventMap', () => {
 		const target = new EventSource('test');
 
-		on(target, 'message', function (this: EventSource, event: MessageEvent) {
+		on(target, 'message', function (this, event) {
 			expect(this).toBeInstanceOf(EventSource);
 			expect(event).toBeInstanceOf(MessageEvent);
 		});
@@ -197,7 +197,7 @@ describe('EventMap', () => {
 	test('FileReader => FileReaderEventMap', () => {
 		const target = new FileReader();
 
-		on(target, 'loadstart', function (this: FileReader, event: ProgressEvent<FileReader>) {
+		on(target, 'loadstart', function (this, event) {
 			expect(this).toBeInstanceOf(FileReader);
 			expect(event).toBeInstanceOf(ProgressEvent);
 		});
@@ -206,7 +206,7 @@ describe('EventMap', () => {
 	test('IDBDatabase => IDBDatabaseEventMap', () => {
 		const target = window.indexedDB.open('test', 4).result;
 
-		on(target, 'versionchange', function (this: IDBDatabase, event: IDBVersionChangeEvent) {
+		on(target, 'versionchange', function (this, event) {
 			expect(this).toBeInstanceOf(IDBDatabase);
 			expect(event).toBeInstanceOf(IDBVersionChangeEvent);
 		});
@@ -215,7 +215,7 @@ describe('EventMap', () => {
 	test('IDBRequest => IDBRequestEventMap', () => {
 		const target = window.indexedDB.open('test', 4).result.transaction(['test']).objectStore('test').index('test').count();
 
-		on(target, 'error', function (this: IDBRequest<number>, event: Event) {
+		on(target, 'error', function (this, event) {
 			expect(this).toBeInstanceOf(IDBRequest);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -224,7 +224,7 @@ describe('EventMap', () => {
 	test('IDBTransaction => IDBTransactionEventMap', () => {
 		const target = window.indexedDB.open('test', 4).result.transaction(['test']);
 
-		on(target, 'complete', function (this: IDBTransaction, event: Event) {
+		on(target, 'complete', function (this, event) {
 			expect(this).toBeInstanceOf(IDBTransaction);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -233,7 +233,7 @@ describe('EventMap', () => {
 	test('MediaDevices => MediaDevicesEventMap', () => {
 		const target = self.navigator.mediaDevices;
 
-		on(target, 'devicechange', function (this: MediaDevices, event: Event) {
+		on(target, 'devicechange', function (this, event) {
 			expect(this).toBeInstanceOf(MediaDevices);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -242,7 +242,7 @@ describe('EventMap', () => {
 	test('MediaKeySession => MediaKeySessionEventMap', () => {
 		const target = new MediaKeySession();
 
-		on(target, 'message', function (this: MediaKeySession, event: MediaKeyMessageEvent) {
+		on(target, 'message', function (this, event) {
 			expect(this).toBeInstanceOf(MediaKeySession);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -251,7 +251,7 @@ describe('EventMap', () => {
 	test('MediaQueryList => MediaQueryListEventMap', () => {
 		const target = window.matchMedia('(max-width: 600px)');
 
-		on(target, 'change', function (this: MediaQueryList, event: MediaQueryListEvent) {
+		on(target, 'change', function (this, event) {
 			expect(this).toBeInstanceOf(MediaQueryList);
 			expect(event).toBeInstanceOf(MediaQueryListEvent);
 		});
@@ -260,7 +260,7 @@ describe('EventMap', () => {
 	test('MediaSource => MediaSourceEventMap', () => {
 		const target = new MediaSource();
 
-		on(target, 'sourceended', function (this: MediaSource, event: Event) {
+		on(target, 'sourceended', function (this, event) {
 			expect(this).toBeInstanceOf(MediaSource);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -269,7 +269,7 @@ describe('EventMap', () => {
 	test('MediaStream => MediaStreamEventMap', () => {
 		const target = new MediaStream();
 
-		on(target, 'addtrack', function (this: MediaStream, event: MediaStreamTrackEvent) {
+		on(target, 'addtrack', function (this, event) {
 			expect(this).toBeInstanceOf(MediaStream);
 			expect(event).toBeInstanceOf(MediaStreamTrackEvent);
 		});
@@ -279,7 +279,7 @@ describe('EventMap', () => {
 		const target = new MediaStream().getTrackById('test');
 
 		if (target) {
-			on(target, 'isolationchange', function (this: MediaStreamTrack, event: Event) {
+			on(target, 'isolationchange', function (this, event) {
 				expect(this).toBeInstanceOf(MediaStreamTrack);
 				expect(event).toBeInstanceOf(Event);
 			});
@@ -289,7 +289,7 @@ describe('EventMap', () => {
 	test('MessagePort => MessagePortEventMap', () => {
 		const target = new MessageChannel().port1;
 
-		on(target, 'messageerror', function (this: MessagePort, event: MessageEvent) {
+		on(target, 'messageerror', function (this, event) {
 			expect(this).toBeInstanceOf(MessagePort);
 			expect(event).toBeInstanceOf(MessageEvent);
 		});
@@ -298,7 +298,7 @@ describe('EventMap', () => {
 	test('Notification => NotificationEventMap', () => {
 		const target = new Notification('test');
 
-		on(target, 'show', function (this: Notification, event: Event) {
+		on(target, 'show', function (this, event) {
 			expect(this).toBeInstanceOf(Notification);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -315,7 +315,7 @@ describe('EventMap', () => {
 			}
 		});
 
-		on(target, 'shippingaddresschange', function (this: PaymentRequest, event: Event) {
+		on(target, 'shippingaddresschange', function (this, event) {
 			expect(this).toBeInstanceOf(PaymentRequest);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -324,7 +324,7 @@ describe('EventMap', () => {
 	test('Performance => PerformanceEventMap', () => {
 		const target = self.performance;
 
-		on(target, 'resourcetimingbufferfull', function (this: Performance, event: Event) {
+		on(target, 'resourcetimingbufferfull', function (this, event) {
 			expect(this).toBeInstanceOf(Performance);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -333,7 +333,7 @@ describe('EventMap', () => {
 	test('PermissionStatus => PermissionStatusEventMap', () => {
 		self.navigator.permissions.query({ name: 'geolocation' }).then((target) => {
 
-			on(target, 'change', function (this: PermissionStatus, event: Event) {
+			on(target, 'change', function (this, event) {
 				expect(this).toBeInstanceOf(PermissionStatus);
 				expect(event).toBeInstanceOf(Event);
 			});
@@ -344,7 +344,7 @@ describe('EventMap', () => {
 	test('RTCDTMFSender => RTCDTMFSenderEventMap', () => {
 		const target = new RTCDTMFSender();
 
-		on(target, 'tonechange', function (this: RTCDTMFSender, event: RTCDTMFToneChangeEvent) {
+		on(target, 'tonechange', function (this, event) {
 			expect(this).toBeInstanceOf(PermissionStatus);
 			expect(event).toBeInstanceOf(RTCDTMFToneChangeEvent);
 		});
@@ -353,7 +353,7 @@ describe('EventMap', () => {
 	test('RTCDataChannel => RTCDataChannelEventMap', () => {
 		const target = new RTCPeerConnection().createDataChannel('test');
 
-		on(target, 'error', function (this: RTCDataChannel, event: RTCErrorEvent) {
+		on(target, 'error', function (this, event) {
 			expect(this).toBeInstanceOf(RTCDataChannel);
 			expect(event).toBeInstanceOf(RTCErrorEvent);
 		});
@@ -362,7 +362,7 @@ describe('EventMap', () => {
 	test('RTCDtlsTransport => RTCDtlsTransportEventMap', () => {
 		const target = new RTCDtlsTransport();
 
-		on(target, 'error', function (this: RTCDtlsTransport, event: RTCErrorEvent) {
+		on(target, 'error', function (this, event) {
 			expect(this).toBeInstanceOf(RTCDtlsTransport);
 			expect(event).toBeInstanceOf(RTCErrorEvent);
 		});
@@ -371,7 +371,7 @@ describe('EventMap', () => {
 	test('RTCIceTransport => RTCIceTransportEventMap', () => {
 		const target = new RTCIceTransport();
 
-		on(target, 'gatheringstatechange', function (this: RTCIceTransport, event: Event) {
+		on(target, 'gatheringstatechange', function (this, event) {
 			expect(this).toBeInstanceOf(RTCIceTransport);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -380,7 +380,7 @@ describe('EventMap', () => {
 	test('RTCPeerConnection => RTCPeerConnectionEventMap', () => {
 		const target = new RTCPeerConnection();
 
-		on(target, 'icecandidateerror', function (this: RTCPeerConnection, event: RTCPeerConnectionIceErrorEvent) {
+		on(target, 'icecandidateerror', function (this, event) {
 			expect(this).toBeInstanceOf(RTCPeerConnection);
 			expect(event).toBeInstanceOf(RTCPeerConnectionIceErrorEvent);
 		});
@@ -389,7 +389,7 @@ describe('EventMap', () => {
 	test('RTCSctpTransport => RTCSctpTransportEventMap', () => {
 		const target = new RTCSctpTransport();
 
-		on(target, 'statechange', function (this: RTCSctpTransport, event: Event) {
+		on(target, 'statechange', function (this, event) {
 			expect(this).toBeInstanceOf(RTCSctpTransport);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -398,7 +398,7 @@ describe('EventMap', () => {
 	test('RTCSrtpSdesTransport => RTCSrtpSdesTransportEventMap', () => {
 		const target = new RTCSrtpSdesTransport(new RTCIceTransport(), {}, {});
 
-		on(target, 'error', function (this: RTCSrtpSdesTransport, event: Event) {
+		on(target, 'error', function (this, event) {
 			expect(this).toBeInstanceOf(RTCSrtpSdesTransport);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -407,7 +407,7 @@ describe('EventMap', () => {
 	test('ScreenOrientation => ScreenOrientationEventMap', () => {
 		const target = self.screen.orientation;
 
-		on(target, 'change', function (this: ScreenOrientation, event: Event) {
+		on(target, 'change', function (this, event) {
 			expect(this).toBeInstanceOf(ScreenOrientation);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -416,7 +416,7 @@ describe('EventMap', () => {
 	test('ServiceWorkerContainer => ServiceWorkerContainerEventMap', () => {
 		const target = new ServiceWorkerContainer();
 
-		on(target, 'messageerror', function (this: ServiceWorkerContainer, event: MessageEvent) {
+		on(target, 'messageerror', function (this, event) {
 			expect(this).toBeInstanceOf(ServiceWorkerContainer);
 			expect(event).toBeInstanceOf(MessageEvent);
 		});
@@ -425,7 +425,7 @@ describe('EventMap', () => {
 	test('ServiceWorkerRegistration => ServiceWorkerRegistrationEventMap', () => {
 		const target = new ServiceWorkerRegistration();
 
-		on(target, 'updatefound', function (this: ServiceWorkerRegistration, event: Event) {
+		on(target, 'updatefound', function (this, event) {
 			expect(this).toBeInstanceOf(ServiceWorkerRegistration);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -434,7 +434,7 @@ describe('EventMap', () => {
 	test('SourceBuffer => SourceBufferEventMap', () => {
 		const target = new SourceBuffer();
 
-		on(target, 'updatestart', function (this: SourceBuffer, event: Event) {
+		on(target, 'updatestart', function (this, event) {
 			expect(this).toBeInstanceOf(SourceBuffer);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -443,7 +443,7 @@ describe('EventMap', () => {
 	test('SourceBufferList => SourceBufferListEventMap', () => {
 		const target = new SourceBufferList();
 
-		on(target, 'addsourcebuffer', function (this: SourceBufferList, event: Event) {
+		on(target, 'addsourcebuffer', function (this, event) {
 			expect(this).toBeInstanceOf(SourceBufferList);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -452,7 +452,7 @@ describe('EventMap', () => {
 	test('SpeechRecognition => SpeechRecognitionEventMap', () => {
 		const target = new SpeechRecognition();
 
-		on(target, 'nomatch', function (this: SpeechRecognition, event: SpeechRecognitionEvent) {
+		on(target, 'nomatch', function (this, event) {
 			expect(this).toBeInstanceOf(SpeechRecognition);
 			expect(event).toBeInstanceOf(SpeechRecognitionEvent);
 		});
@@ -461,7 +461,7 @@ describe('EventMap', () => {
 	test('SpeechSynthesis => SpeechSynthesisEventMap', () => {
 		const target = new SpeechSynthesis();
 
-		on(target, 'voiceschanged', function (this: SpeechSynthesis, event: Event) {
+		on(target, 'voiceschanged', function (this, event) {
 			expect(this).toBeInstanceOf(SpeechSynthesis);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -470,7 +470,7 @@ describe('EventMap', () => {
 	test('SpeechSynthesisUtterance => SpeechSynthesisUtteranceEventMap', () => {
 		const target = new SpeechSynthesisUtterance();
 
-		on(target, 'boundary', function (this: SpeechSynthesisUtterance, event: SpeechSynthesisEvent) {
+		on(target, 'boundary', function (this, event) {
 			expect(this).toBeInstanceOf(SpeechSynthesisUtterance);
 			expect(event).toBeInstanceOf(SpeechSynthesisEvent);
 		});
@@ -479,7 +479,7 @@ describe('EventMap', () => {
 	test('TextTrackCue => TextTrackCueEventMap', () => {
 		const target = new VTTCue(1, 1, 'test');
 
-		on(target, 'enter', function (this: TextTrackCue, event: Event) {
+		on(target, 'enter', function (this, event) {
 			expect(this).toBeInstanceOf(TextTrackCue);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -488,7 +488,7 @@ describe('EventMap', () => {
 	test('TextTrack => TextTrackEventMap', () => {
 		const target = new TextTrack();
 
-		on(target, 'cuechange', function (this: TextTrack, event: Event) {
+		on(target, 'cuechange', function (this, event) {
 			expect(this).toBeInstanceOf(TextTrack);
 			expect(event).toBeInstanceOf(Event);
 		});
@@ -497,7 +497,7 @@ describe('EventMap', () => {
 	test('TextTrackList => TextTrackListEventMap', () => {
 		const target = new TextTrackList();
 
-		on(target, 'removetrack', function (this: TextTrackList, event: TrackEvent) {
+		on(target, 'removetrack', function (this, event) {
 			expect(this).toBeInstanceOf(TextTrackList);
 			expect(event).toBeInstanceOf(TrackEvent);
 		});
@@ -506,7 +506,7 @@ describe('EventMap', () => {
 	test('VisualViewport => VisualViewportEventMap', () => {
 		const target = new VisualViewport();
 
-		on(target, 'resize', function (this: VisualViewport, event: UIEvent) {
+		on(target, 'resize', function (this, event) {
 			expect(this).toBeInstanceOf(VisualViewport);
 			expect(event).toBeInstanceOf(UIEvent);
 		});
@@ -515,7 +515,7 @@ describe('EventMap', () => {
 	test('WebSocket => WebSocketEventMap', () => {
 		const target = new WebSocket('test');
 
-		on(target, 'close', function (this: WebSocket, event: CloseEvent) {
+		on(target, 'close', function (this, event) {
 			expect(this).toBeInstanceOf(WebSocket);
 			expect(event).toBeInstanceOf(CloseEvent);
 		});
@@ -524,7 +524,7 @@ describe('EventMap', () => {
 	test('XMLHttpRequestEventTarget => XMLHttpRequestEventTargetEventMap', () => {
 		const target = new XMLHttpRequestEventTarget();
 
-		on(target, 'loadstart', function (this: XMLHttpRequestEventTarget, event: ProgressEvent<XMLHttpRequestEventTarget>) {
+		on(target, 'loadstart', function (this, event) {
 			expect(this).toBeInstanceOf(XMLHttpRequestEventTarget);
 			expect(event).toBeInstanceOf(ProgressEvent);
 		});
