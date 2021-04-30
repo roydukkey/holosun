@@ -58,8 +58,8 @@ export function on <T extends EventTarget, E extends Event, R> (
  *
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#the_event_listener_callback} The event listener callback for details on the callback itself.
  */
-export function on <T extends EventTarget, L extends EventListenerObject | null> (
-	target: T,
+export function on <L extends EventListenerObject | null> (
+	target: EventTarget,
 	types: string,
 	listener: L,
 	useCaptureOrOptions?: boolean | AddEventListenerOptions
@@ -123,8 +123,8 @@ export function on <T extends Node, E extends Event, R> (
  *
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#the_event_listener_callback} The event listener callback for details on the callback itself.
  */
-export function on <T extends Node, L extends EventListenerObject | null> (
-	node: T,
+export function on <L extends EventListenerObject | null> (
+	node: Node,
 	selector: string,
 	types: string,
 	listener: L,
@@ -156,8 +156,8 @@ export function on <T extends EventTarget, E extends Event, R> (
 ): typeof listener | undefined;
 
 
-export function on <T extends EventTarget, L extends EventListenerObject | null> (
-	targetOrNode: T,
+export function on <L extends EventListenerObject | null> (
+	targetOrNode: EventTarget,
 	selector: string | null,
 	types: string,
 	listener: L,
