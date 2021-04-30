@@ -7,7 +7,7 @@ import { on as internalOn } from './support/on';
 
 
 /**
- * Attach an event listener that will be called whenever a specified event type is delivered to the given target.
+ * Attach an event listener that will be called whenever the specified event type is delivered to the given target.
  *
  * @param target - The target on which the event listener is attached.
  * @param type - A case-sensitive string representing the {@link https://developer.mozilla.org/en-US/docs/Web/Events|event type} to listen for.
@@ -27,7 +27,7 @@ export function on <T extends EventTarget, E extends keyof EventMap<T> & string,
 
 
 /**
- * Attach an event listener that will be called whenever a specified event type is delivered to the given target.
+ * Attach an event listener that will be called whenever the specified event types are delivered to the given target.
  *
  * @param target - The target on which the event listener is attached.
  * @param types - A case-sensitive string representing the {@link https://developer.mozilla.org/en-US/docs/Web/Events|event type}s to listen for.
@@ -47,7 +47,7 @@ export function on <T extends EventTarget, E extends Event, R> (
 
 
 /**
- * Attach an event listener that will be called whenever a specified event type is delivered to the given target.
+ * Attach an event listener that will be called whenever the specified event types are delivered to the given target.
  *
  * @param target - The target on which the event listener is attached.
  * @param types - A case-sensitive string representing the {@link https://developer.mozilla.org/en-US/docs/Web/Events|event type}s to listen for.
@@ -67,7 +67,7 @@ export function on <T extends EventTarget, L extends EventListenerObject | null>
 
 
 /**
- * Attach an event listener that will be called whenever a specified event type is delivered to the given node from specific descendants.
+ * Attach an event listener that will be called whenever the specified event type is delivered to the given node from specific descendants.
  *
  * @param node - The node on which the event listener is attached.
  * @param selector - A selector string to filter the descendants of the given node that trigger the event.
@@ -89,7 +89,7 @@ export function on <T extends Node, E extends keyof EventMap<T>, R> (
 
 
 /**
- * Attach an event listener that will be called whenever a specified event type is delivered to the given node from specific descendants.
+ * Attach an event listener that will be called whenever the specified event types are delivered to the given node from specific descendants.
  *
  * @param node - The node on which the event listener is attached.
  * @param selector - A selector string to filter the descendants of the given node that trigger the event.
@@ -111,7 +111,7 @@ export function on <T extends Node, E extends Event, R> (
 
 
 /**
- * Attach an event listener that will be called whenever a specified event type is delivered to the given node from specific descendants.
+ * Attach an event listener that will be called whenever the specified event types are delivered to the given node from specific descendants.
  *
  * @param node - The node on which the event listener is attached.
  * @param selector - A selector string to filter the descendants of the given node that trigger the event.
@@ -133,7 +133,7 @@ export function on <T extends Node, L extends EventListenerObject | null> (
 
 
 /**
- * Attach an event listener that will be called whenever a specified event type is delivered to the given target or node.
+ * Attach an event listener that will be called whenever the specified event type is delivered to the given target or node.
  *
  * @remarks
  * These ambiguous signatures enable other libraries to forward configuration up the chain without branching logic.
