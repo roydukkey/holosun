@@ -19,7 +19,7 @@ import { oneAugmenterKey, single } from './support/single';
  *
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#the_event_listener_callback} The event listener callback for details on the callback itself.
  */
- export function one <T extends EventTarget, E extends keyof EventMap<T> & string, R> (
+ export function one <T extends EventTarget, E extends keyof EventMap<T>, R> (
 	target: T,
 	type: E,
 	listener: (this: T, event: EventMap<T>[E]) => R,
